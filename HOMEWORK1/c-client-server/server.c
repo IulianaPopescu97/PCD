@@ -52,6 +52,6 @@ switch(operator) {
     }
  
 write(connfd,&result,sizeof(result)); 
+close(connfd);
 }
-close(sockfd);
 }
