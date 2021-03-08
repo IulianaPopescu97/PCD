@@ -26,12 +26,14 @@ printf("bind sucessful\n");
 if((listen(sockfd,5))==0) //listen for connections on a socket
 printf("listen sucessful\n");
 
+while (1) {
 sin_size = sizeof(struct sockaddr_in);
 if((connfd=accept(sockfd,(struct sockaddr *)&clientaddr,&sin_size))>0);
 printf("accept sucessful\n");
 read(connfd, &operator,10);
 read(connfd,&op1,sizeof(op1));
 read(connfd,&op2,sizeof(op2));
+
 switch(operator) {
         case '+': result=op1 + op2;
          printf("Result is: %d + %d = %d\n",op1, op2, result);
@@ -48,7 +50,8 @@ switch(operator) {
         default: 
                 printf("ERROR: Unsupported Operation");
     }
-  
-write(connfd,&result,sizeof(result));   
+ 
+write(connfd,&result,sizeof(result)); 
+}
 close(sockfd);
 }
