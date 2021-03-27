@@ -9,6 +9,21 @@ var reservations = [
         "people": 2,
         "hour": "5:00"
     },
+    {
+        "id": 3,
+        "people": 5,
+        "hour": "6:00"
+    },
+    {
+        "id": 4,
+        "people": 2,
+        "hour": "10:00"
+    },
+    {
+        "id": 5,
+        "people": 3,
+        "hour": "8:00"
+    },
 ];
 
 
