@@ -2,27 +2,32 @@ var reservations = [
     {
         "id": 1,
         "people": 10,
-        "hour": "8:00"
+        "hour": "8:00",
+        "reasons" : ["party", "birthday"]
     },
     {
         "id": 2,
         "people": 2,
-        "hour": "5:00"
+        "hour": "5:00",
+        "reasons" : ["business dinner"]
     },
     {
         "id": 3,
         "people": 5,
-        "hour": "6:00"
+        "hour": "6:00",
+        "reasons" : ["party", "wedding"]
     },
     {
         "id": 4,
         "people": 2,
-        "hour": "10:00"
+        "hour": "10:00",
+        "reasons" : ["conference"]
     },
     {
         "id": 5,
         "people": 3,
-        "hour": "8:00"
+        "hour": "8:00",
+        "reasons" : ["graduation"]
     },
 ];
 
@@ -67,7 +72,8 @@ exports.create = function(reservation, reqId){
     reservations.push({
         id: id,
         people: reservation.people,
-        hour: reservation.hour
+        hour: reservation.hour,
+        reasons: reservation.reasons
     });
 
     return reservations.find(function(reservation){
@@ -85,6 +91,9 @@ exports.update = function(reservation, id){
     }
     if(reservation.people){
         existingReservation.people = reservation.people;
+    }
+    if(reservation.reasons){
+        existingReservation.reasons = reservation.reasons;
     }
     reservations.splice(reservations.indexOf(existingReservation), 1, existingReservation);
 };

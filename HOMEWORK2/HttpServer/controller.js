@@ -62,7 +62,17 @@ var handlePost = function(req, res){
         if(reqUrlParts[0] === 'reservations'){  
             var reservation = reservations.create(postBody);
             created(req, res, reservation);
-        }else{
+        
+        } else 
+        if(reqUrlParts[0] === 'reservation'){
+            var reservation = reservations.getReservation(reqUrlParts[1]);
+            if(reservation){
+                reservation.reasons.push(postBody.reasons)
+            }
+            created(req, res, reservation);
+            
+        }
+        else{
             InvalidRequest();
         }
     });
