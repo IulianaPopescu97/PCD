@@ -92,6 +92,14 @@ var handlePut = function(req, res){
 
     req.on('end', function () {
         putBody = JSON.parse(body);
+        if(reqUrlParts[0] === 'reservations'){ 
+            if(putBody.length >=0 ){
+                newReservations = putBody.map((reserv)=> {
+                    return reserv;
+                });
+            }
+            created(req, res, newReservations);
+        } else 
         if(reqUrlParts[0] === 'reservation'){  
             var reservation = reservations.getReservation(reqUrlParts[1]);
             if(reservation){
